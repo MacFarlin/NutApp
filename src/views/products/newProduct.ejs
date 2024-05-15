@@ -1,0 +1,71 @@
+<%- include('../partials/head') %>
+
+<link rel="stylesheet" href="/css/newProduct.css" />
+<title>New product</title>
+</head>
+
+<body>
+  <%- include('../partials/header') %>
+  <main>
+    <div class="containerNP">
+      <h1>Crear nuevo producto</h1>
+      <form action="/products" method="POST" enctype="multipart/form-data">
+
+        <label for="productName">Nombre:</label>
+        <input type="text" id="productName" name="productName" class="control <%= locals.errors && errors.productName ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.productName : '' %>">
+        <% if(locals.errors && errors.productName) { %>
+        <div class="text-danger">
+          <%= errors.productName.msg  %>
+        </div>
+        <% } %>
+
+        <label for="category">Categoría:</label>
+        <select id="category" name="category" class="control <%= locals.errors && errors.IDCategory ? 'is-invalid' : '' %>">
+          <% for(let i = 0; i < categories.length; i++) { %>
+          <option value="<%= categories[i].IDCategory %>" <%= locals.oldData && locals.oldData.IDCategory == categories[i].IDCategory ? 'selected' : '' %>><%= categories[i].NameCategory %></option>
+          <% } %>
+
+        </select>
+        <% if(locals.errors && errors.IDCategory) { %>
+        <div class="text-danger">
+          <%= errors.IDCategory.msg  %>
+        </div>
+        <% } %>
+
+
+
+        <label for="price">Precio: </label>
+        <input type="number" id="price" name="price" class="control <%= locals.errors && errors.price ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.price : '' %>">
+        <% if(locals.errors && errors.price) { %>
+        <div class="text-danger">
+          <%= errors.price.msg  %>
+        </div>
+        <% } %>
+
+        <label for="stock">Stock: </label>
+        <input type="number" id="stock" name="stock" class="control <%= locals.errors && errors.stock ? 'is-invalid' : '' %>" value="<%= locals.oldData ? oldData.stock : '' %>"></input>
+        <% if(locals.errors && errors.stock) { %>
+        <div class="text-danger">
+          <%= errors.stock.msg  %>
+        </div>
+        <% } %>
+
+        <label for="image">Imagen del producto: </label>
+        <input type="file" id="image" name="image">
+        <% if(locals.errors && errors.image) { %>
+        <div class="text-danger">
+          <%= errors.image.msg  %>
+        </div>
+        <% } %>
+
+        <button type="submit">Crear</button>
+        <button type="reset">Borrar</button>
+
+      </form>
+    </div>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+
+</html>

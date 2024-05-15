@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/normalize.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="shortcut icon" href="/img/LOGO.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap" rel="stylesheet" />
+
+
+<link rel="stylesheet" href="/css/productDetail.css" />
+</head>
+
+<body>
+  
+
+  <header>
+    <div class="logo">
+  
+  
+      <a href="/"><img src="/img/LOGO.png" alt="Logo" /></a>
+      </div>
+  
+    <nav class="barra-navegacion">
+      <ul class="barra-izquierda">
+        <li><a href="/employees">Empleados</a></li>
+        <% if (locals.isLogged) { %>
+        <li><a href="/new-employee">Nuevo empleado</a></li>
+        <% } %>
+        <li><a>| </a></li>
+        <li><a href="/products">Inventario</a></li>
+        <% if (locals.isLogged) { %>
+        <li><a href="/new-product">Nuevo producto</a></li>
+        <% } %>    
+        <li><a>| </a></li>
+        <li><a href="/clients">Clientes</a></li>
+        <% if (locals.isLogged) { %>
+        <li><a href="/new-client">Nuevo cliente</a></li>
+        <% } %>
+        <li><a>|</a></li>
+        <li><a href="/events">Eventos</a></li>
+
+      </ul>
+  
+      <ul class="barra-derecha">
+        <% if (locals.isLogged) { %>
+        <li class="nav-item">
+          <div class="perfil-dropdown">
+            <img src="/img/users/<%= locals.userLogged.Image %>" width="40" style="border-radius: 50%;">
+            <a class="">Hola <%= locals.userLogged.FirstName %> </a>
+            <ul class="dropdown-menu">
+              <li><a href="/profile">Mi perfil</a></li>
+              <li><a href="/logout">Cerrar sesión</a></li>
+            </ul>
+          </div>
+        </li>
+        <% } else { %>
+        <li><a href="/login">Iniciar sesión</a></li>
+        <li><a href="/register">Registrarse</a></li>
+        <% } %>
+  
+      </ul>
+    </nav>
+  </header>
+
+  <h2 class="containerTitle">Detalles del Cliente</h2>
+
+  <main class="containerMainProductDetail">
+    <div class="containerCardProducto">
+      <img src="/img/clients/<%= client.Image %>" alt="<%= client.FirstName %>">
+      <section class="containerSectionDetalle">
+        <h3>Nombre: <%= client.FirstName %></h3>
+        <h3>Apellido: <%= client.LastName %></h3>
+        <h3>Email: <%= client.Email %></h3>
+        <h3>Telefono <%= client.Tel %></h3>
+        <a href="/productCart"><button>AGREGAR AL EVENTO</button></a>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <section class="containerFooter">
+      <article class="containerSections">
+        UNPAZ 2024 - Trabajo De Campo 
+      </article>
+        
+    </section>
+  </footer>
+</body>
+
+</html>

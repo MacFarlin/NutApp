@@ -1,0 +1,39 @@
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/css/users.css" />
+<title>Inventario</title>
+
+</head>
+<body>
+  <%- include('../partials/header') %>
+
+  <main>
+    <h2>Lista de Clientes</h2>
+    <section class="users_container">
+      <% for(let i = 0; i < allClients.length; i++){ %>
+      <article class="user_container">
+        <% if (allClients[i].Image && allClients[i].Image.length) { %>
+          <img src="/img/clients/<%= allClients[i].Image %>" alt="image" width="300px" height="300px">
+          <% } else { %>     
+          <img src="/img/clients/usuarioSinImagen.jpg" alt="image" width="300px" height="300px">
+            <% } %>
+            <h3 ><%= allClients[i].FirstName %></h3>
+            <h3 ><%= allClients[i].LastName %></h3>           
+            <h3>ID: <%= allClients[i].IDClient %></h3>
+            <h3>Email: <%= allClients[i].Email %></h3>
+            <h3>Telefono: <%= allClients[i].Tel %></h3>
+            <form action="/client/<%= allClients[i].IDClient %>" method="GET">
+              <button type="submit">Ver</button>
+            </form>
+            <form action="/products/delete/<%= allClients[i].IDClient %>?_method=DELETE" method="POST">
+              <button type="submit">Borrar</button>
+            </form>
+
+      </article>
+      <% } %>
+    </section>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<%- include('./partials/head') %>
+
+<link rel="stylesheet" href="/css/index.css" />
+
+
+<title>Home</title>
+</head>
+
+<body>
+
+  <%- include('./partials/header') %>
+
+  <main class="index">
+
+    <% if (locals.isLogged) { %>
+      <form action="/new-event" >
+        <button type="submit" style="background-color: gold; color: black;"> Crear Evento </button>
+      </form>
+      <% } %>
+   
+      <h2 class="titulo">Servicio de Catering para Eventos </h2>
+    <article class="product">
+      <img src="/img/img1.png" alt="Evento 1" />
+    </article>
+    <article class="product">
+      <img src="/img/img2.png" alt="Evento 2" />
+    </article>
+    <article class="product">
+      <img src="/img/img3.png" alt="Evento 3" />
+    </article>
+    <article class="product">
+      <img src="/img/img4.png" alt="Evento 4" />
+    </article>
+    <article class="product">
+      <img src="/img/img5.png" alt="Evento 5" />
+    </article>
+    <article class="product">
+      <img src="/img/img6.png" alt="Evento 6" />
+    </article>
+  </main>
+
+  <%- include('./partials/footer') %>
+
+</body>
+
+</html>
